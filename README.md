@@ -1,3 +1,6 @@
+# Why this Fork?
+In [rust_q_sim](https://github.com/Janekdererste/rust_q_sim) I am using metis-rs as a dependency. Since this crate is a Binding to the Metis-C-Library, the metis-sys crate has a dependency on `bindgen v0.58`. The `rust_q_sim` project also has a dependency on the `rsmpi` crate which itself is a wrapper for the MPI-C api. This project also uses `bindgen` but with `v0.60`. This version conflict resulted in build errors, where `libclan` wasn't loaded correctly. With this fork I changed the `libgen` dependency to `v0.60` to match the one in `rsmpi`. I didn't make a PR into the upstream repository, since the current version of bindgen is `v0.63` which means both, `metis-rs` and `rsmpi` are using outated versions. Since the `metis-rs` repo is quite stable I would think that this is ok for now. 
+
 # metis-rs
 
 Idiomatic bindings to [libmetis][METIS], a graph and mesh partitioner.
